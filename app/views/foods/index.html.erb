@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>Index</h1>
 
 
 <h1>Welcome!</h1>
 
-
+<%= form_tag(foods_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
 <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: foods_autocomplete_food_name_path} %>  
-
-
-
-
-
-<!--  <div class="row">
-      <div class="large-4 columns foods">
-      
-        <%= autocomplete_field_tag 'searchfield', #name, value, source, options
-                                   '',
-                                   #'/foods/autocomplete_food_name',
-                                   'autocomplete_food_name_path',
-                                   'data-delimiter' => ',', :multiple => true,
-                                   :placeholder => 'foodsearch'
-        %>
-      </div>
-    </div> -->
+<%= submit_tag "Search" %>
+<%end%>
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>
 
 <table>
   <thead>
@@ -37,6 +44,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td><%= food.name %></td>
+     
         <td><%= link_to 'Show', food %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -48,3 +56,5 @@
 <br>
 
 <%= link_to 'New Food', new_food_path %>
+
+

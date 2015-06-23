@@ -6,6 +6,10 @@ class FoodsController < ApplicationController
   # GET /foods.json
   def index
     @foods = Food.all
+     if params[:search]
+      @foods = Food.name_like("%#{params[:search]}%").order('name')
+    else
+    end
   end
 
   # GET /foods/1

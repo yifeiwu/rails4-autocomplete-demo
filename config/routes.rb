@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
+root 'foods#index'
  get 'foods/autocomplete_food_name'
-  resources :foods do
+  resources :foods 
 
-
-    get :autocomplete_food_name, on: :collection
-
-  end
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

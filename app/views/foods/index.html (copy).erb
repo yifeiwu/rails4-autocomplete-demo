@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+<%= form_for(@foods) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.autocomplete_field :name, autocomplete_food_name_foods_path %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $('#food_name').bind('railsAutocomplete.select', function(event, data){
+    /* Do something here */
+    alert("woot");
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Index</h1>
+
+
+<h1>Welcome!</h1>
+<!-- 
+<%= form_tag(foods_path, :method => "get", id: "search-form") do %>
+<%= label_tag (:name )%>
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: foods_autocomplete_food_name_path} %>  
+<%= submit_tag "Search" %>
+<%end%>
+
+
+ -->
+
+<!--  <div class="row">
+      <div class="large-4 columns foods">
+      
+        <%= autocomplete_field_tag 'searchfield', #name, value, source, options
+                                   '',
+                                   #'/foods/autocomplete_food_name',
+                                   'autocomplete_food_name_path',
+                                   'data-delimiter' => ',', :multiple => true,
+                                   :placeholder => 'foodsearch'
+        %>
+      </div>
+    </div> -->
